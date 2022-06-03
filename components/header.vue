@@ -6,7 +6,7 @@
       <div v-on:click="clickCatalog"> Каталог </div>
       <div v-on:click="clickAbout"> О нас </div>
       <div v-on:click="clickContact"> Контакты </div>
-      <img id="cart" src="cart.png"/>
+      <img v-on:click="clickCard" id="cart" src="cart.png"/>
     </div>
   </div>
 </template>
@@ -47,6 +47,11 @@ export default {
       this.$emit('mana', this.catalog, this.about, this.contact);
       console.log('children work')
     },
+    clickCard() {
+      this.$emit('manacard');
+      console.log('card work')
+      
+    }
   }
 };
 </script>

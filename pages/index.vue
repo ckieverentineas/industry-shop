@@ -1,8 +1,9 @@
 <template>
   <div>
     <div>
-      <Header v-on:mana="opa"/>
+      <Header v-on:mana="opa" v-on:manacard="cardOn"/>
     </div>
+    <div v-if="card"> Лови Корзинку</div>
     <div v-if="catalog">
       <Shop/>
     </div>
@@ -24,7 +25,8 @@ export default {
     return {
       catalog: true,
       about: false,
-      contact: false
+      contact: false,
+      card: false
     };
   },
   computed: {
@@ -50,6 +52,9 @@ export default {
       this.about = about
       this.contact = contact
       console.log(`mother eat`)
+    },
+    cardOn() {
+      this.card ? this.card=false : this.card = true
     }
   }
 };
