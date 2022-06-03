@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
-      <Header/>
+      <Header v-on:mana="opa"/>
     </div>
     <div v-if="catalog">
       <Shop/>
     </div>
     <div v-if="about">
-      <Shop/>
+      <About/>
     </div>
     <div v-if="contact">
-      <Shop/>
+      <Contact/>
     </div>
     <div>
       <Footer/>
@@ -28,16 +28,28 @@ export default {
     };
   },
   computed: {
-    Checker() {
-        
-        
-    }
   },
   methods: {
-    clickCatalog(item) {
+    clickCatalog() {
       this.catalog = true
       this.about = false
       this.contact = false
+    },
+    clickAbout() {
+      this.catalog = false
+      this.about = true
+      this.contact = false
+    },
+    clickContact() {
+      this.catalog = false
+      this.about = false
+      this.contact = true
+    },
+    opa(catalog, about, contact) {
+      this.catalog = catalog
+      this.about = about
+      this.contact = contact
+      console.log(`mother eat`)
     }
   }
 };

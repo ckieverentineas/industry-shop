@@ -365,8 +365,8 @@ export default {
   },
   computed: {
     Checker() {
-        
-        
+        this.$emit('status', 'Changed');
+        console.log('children')
     }
   },
   methods: {

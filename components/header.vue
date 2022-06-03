@@ -3,13 +3,53 @@
   <div id="main">
     <div id="nav">
       <img id="logo" src="favicon.ico"/>
-      <div> Каталог </div>
-      <div> О нас </div>
-      <div> Контакты </div>
+      <div v-on:click="clickCatalog"> Каталог </div>
+      <div v-on:click="clickAbout"> О нас </div>
+      <div v-on:click="clickContact"> Контакты </div>
       <img id="cart" src="cart.png"/>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      catalog: true,
+      about: false,
+      contact: false
+    };
+  },
+  computed: {
+    Checker() {
+        this.$emit('mana', this.catalog, this.about, this.contact);
+        console.log('children work')
+    }
+  },
+  methods: {
+    clickCatalog() {
+      this.catalog = true
+      this.about = false
+      this.contact = false
+      this.$emit('mana', this.catalog, this.about, this.contact);
+      console.log('children work')
+    },
+    clickAbout() {
+      this.catalog = false
+      this.about = true
+      this.contact = false
+      this.$emit('mana', this.catalog, this.about, this.contact);
+      console.log('children work')
+    },
+    clickContact() {
+      this.catalog = false
+      this.about = false
+      this.contact = true
+      this.$emit('mana', this.catalog, this.about, this.contact);
+      console.log('children work')
+    },
+  }
+};
+</script>
 
 <style scoped>
 div { 
